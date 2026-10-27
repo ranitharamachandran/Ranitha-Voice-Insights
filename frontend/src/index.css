@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: rgb(15, 23, 42);
+  background-color: rgb(240, 244, 242);
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Design System Color Palette */
+  /* Primary Brand & Accent Colors */
+  --brand-primary: rgb(45, 106, 79);        /* Eucalyptus Green (Active Accent) */
+  --brand-secondary: rgb(27, 67, 50);       /* Deep Forest Teal (Logo/Header) */
+  --accent-mint: rgb(216, 243, 232);        /* Soft Mint (Secondary Accent) */
+  
+  /* Backgrounds & Surfaces */
+  --bg-main: rgb(240, 244, 242);            /* Main App Background */
+  --surface-glass: rgba(255, 255, 255, 0.6); /* Workspace Glass Panel */
+  --surface-sidebar: rgb(248, 250, 249);    /* Sidebar/Control Panel */
+  --surface-floating: rgb(51, 65, 85);      /* Floating Action Bar */
+  
+  /* Typography & UI Elements */
+  --text-primary: rgb(15, 23, 42);          /* Primary Text (Headings/Active) */
+  --text-secondary: rgb(100, 116, 139);     /* Secondary Text (Previews/Dates) */
+  --border-subtle: rgb(226, 232, 240);      /* Subtle Borders/Dividers */
+  
+  /* Status & Interaction States */
+  --surface-white: rgb(255, 255, 255);      /* Inactive Command Cards */
+  --status-reading: rgb(52, 211, 153);      /* Reading/Mic Pulse */
+  
+  /* Legacy Support (mapped to new system) */
+  --color-primary: rgb(45, 106, 79);
+  --color-primary-600: rgb(27, 67, 50);
+  --color-primary-50: rgb(216, 243, 232);
+  --color-success: rgb(52, 211, 153);
+  --color-danger: rgb(239, 68, 68);
+  --color-muted: rgb(100, 116, 139);
+  --radius: 14px;
+  --shadow-soft: 0 10px 20px rgba(15, 23, 42, 0.08);
+  --shadow-strong: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+}
+
+/* Selection & focus visuals */
+::selection { background: rgba(45, 106, 79, 0.25); }
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[contenteditable="true"]:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: rgb(100, 116, 139);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.btn {
+  @apply inline-flex items-center justify-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-200;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(226, 232, 240);
+  color: rgb(15, 23, 42);
+  box-shadow: var(--shadow-soft);
+}
+.btn:hover { background: rgb(248, 250, 249); }
+.btn:active { transform: translateY(0.5px); }
+
+.editor-btn {
+  @apply inline-flex items-center justify-center px-2.5 py-1.5 rounded-md text-sm font-medium transition-all duration-200;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(226, 232, 240);
+  color: rgb(15, 23, 42);
+  box-shadow: var(--shadow-soft);
+}
+.editor-btn:hover { background: rgb(248, 250, 249); }
+.editor-btn-active { background: rgb(216, 243, 232); border-color: rgb(45, 106, 79); color: rgb(45, 106, 79); }
+
+/* Elevation for primary actions */
+.bg-euca-600,.bg-euca-500,.bg-green-600,.bg-blue-600,.bg-emerald-600,.bg-red-500,.bg-orange-500 { box-shadow: var(--shadow-soft); }
+.bg-euca-600:hover,.bg-euca-500:hover,.bg-green-600:hover,.bg-blue-600:hover,.bg-emerald-600:hover,.bg-red-500:hover,.bg-orange-500:hover { box-shadow: var(--shadow-strong); }
+
+/* Inputs */
+input[type="text"],
+textarea {
+  border-radius: var(--radius);
+  border-color: rgb(226, 232, 240);
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow 200ms, border-color 200ms, background-color 200ms;
+}
+input[type="text"]:focus,
+textarea:focus {
+  border-color: rgb(45, 106, 79);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+}
+input::placeholder, textarea::placeholder { color: rgb(100, 116, 139); }
+
+/* Cards (dark eucalyptus) */
+.card-dark {
+  background: rgb(27, 67, 50);
+  border: 1px solid rgb(45, 106, 79);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+.card-dark:hover { box-shadow: var(--shadow-strong); }
+
+/* Editor content */
+.ProseMirror {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.ProseMirror p { margin: 0.25rem 0; }
+.ProseMirror ul { list-style: disc; margin: 0.25rem 0 0.5rem; padding-left: 1.25rem; }
+.ProseMirror ol { list-style: decimal; margin: 0.25rem 0 0.5rem; padding-left: 1.25rem; }
+.ProseMirror li { margin: 0.15rem 0; }
+
+/* Notes list typography */
+.prose h4 { color: rgb(15, 23, 42); }
+.prose p { color: rgb(15, 23, 42); }
+.prose ul { list-style: disc; padding-left: 1.25rem; }
+.prose ol { list-style: decimal; padding-left: 1.25rem; }
+
+/* Scrollbar */
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: rgb(226, 232, 240); }
+*::-webkit-scrollbar-thumb { background: rgb(100, 116, 139); border-radius: 9999px; }
+*::-webkit-scrollbar-thumb:hover { background: rgb(45, 106, 79); }
