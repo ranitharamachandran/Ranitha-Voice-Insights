@@ -18,7 +18,7 @@ Base.metadata.create_all(bind=engine)
 # ===============================================
 # FastAPI Application
 # ===============================================
-app = FastAPI(title="Speech Notes App")
+app = FastAPI(title="Ranitha Voice Insights")
 
 # ===============================================
 # TEST DATABASE CONNECTION
